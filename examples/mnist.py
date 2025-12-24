@@ -132,16 +132,3 @@ for Xb, yb in batch_iter(X_test, y_test, batch_size=256, shuffle=False):
     seen += len(Xb)
 
 print(f"\nTest accuracy: {correct / seen:.4f}")
-# result =>
-# epoch 01 | loss = 0.4144 | acc = 0.8815
-# epoch 02 | loss = 0.1814 | acc = 0.9472
-# epoch 03 | loss = 0.1347 | acc = 0.9609
-# epoch 04 | loss = 0.1072 | acc = 0.9683
-# epoch 05 | loss = 0.0891 | acc = 0.9741
-# epoch 06 | loss = 0.0759 | acc = 0.9779
-# epoch 07 | loss = 0.0644 | acc = 0.9817
-# epoch 08 | loss = 0.0561 | acc = 0.9839
-# epoch 09 | loss = 0.0490 | acc = 0.9856
-# epoch 10 | loss = 0.0429 | acc = 0.9878
-
-# Test accuracy: 0.9772

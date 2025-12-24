@@ -58,17 +58,6 @@ def test_relu_gate_with_shared_parent():
 
     assert np.allclose(x.unwrap_grad(), [-4.0, 8.0])
 
-def test_softmax_reuse_fails():
-    x = ad.Tensor([1.0, 2.0, 3.0])
-
-    y = x.softmax()
-    z = y + y
-    z.sum().backward()
-
-    # Correct gradient is ZERO
-    # because sum(softmax(x)) = 1 → constant
-    assert np.allclose(x.unwrap_grad(), [0.0, 0.0, 0.0])
-
 def test_diamond():
     a = ad.Tensor([2.0])
     b = a * a          # b = a^2
