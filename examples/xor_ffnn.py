@@ -40,6 +40,23 @@ class Linear:
 fc1 = Linear(2, 8)
 fc2 = Linear(8, 1)
 
+# def softmax(self) -> Tensor:
+#     shifted = self.data - np.max(self.data)
+#     exps = np.exp(shifted)
+#     out_data = exps / exps.sum()
+#     out = Tensor(out_data,
+#                 parents=(self,),
+#                 op_name="Softmax",
+#                 requires_grad=self.requires_grad,
+#             )
+#     def _backward_fn():
+#         if self.requires_grad:
+#             s = out.data
+#             grad_sum = np.sum(out.grad * s)
+#             self.grad += (out.grad - grad_sum) * s
+#     out._backward_fn = _backward_fn
+#     return out
+
 def model(x: Tensor) -> Tensor:
     h = fc1(x).relu()
     y = fc2(h)

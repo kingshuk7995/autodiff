@@ -153,27 +153,6 @@ class Tensor:
 
         out._backward_fn = _backward_fn
         return out
-
-    def softmax(self) -> Tensor:
-        shifted = self.data - np.max(self.data)
-        exps = np.exp(shifted)
-        out_data = exps / exps.sum()
-
-        out = Tensor(
-            out_data,
-            parents=(self,),
-            op_name="Softmax",
-            requires_grad=self.requires_grad,
-        )
-
-        def _backward_fn():
-            if self.requires_grad:
-                s = out.data
-                grad_sum = np.sum(out.grad * s)
-                self.grad += (out.grad - grad_sum) * s
-
-        out._backward_fn = _backward_fn
-        return out
     
     def sigmoid(self) -> Tensor:
         out_data = 1 / (1 + np.exp(-self.data))
